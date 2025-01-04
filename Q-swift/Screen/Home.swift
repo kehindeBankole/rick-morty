@@ -95,9 +95,10 @@ struct Home: View {
     }
 
     func loadNextPage() {
-        guard !viewModel.isLoading else { return }
+        guard !viewModel.isLoading && currentPage != viewModel.data?.info.pages else { return }
         currentPage += 1
         fetchCharacters()
+        print(currentPage)
     }
 
     func fetchCharacters() {
